@@ -9,7 +9,7 @@ const Customer = db.define(
     l_name: DataTypes.STRING,
     address: DataTypes.STRING,
     email: DataTypes.STRING,
-    mobile: DataTypes.INTEGER,
+    mobile: DataTypes.STRING,
   },
   {
     freezeTableName: true,
