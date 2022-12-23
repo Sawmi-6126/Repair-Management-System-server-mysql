@@ -1,23 +1,10 @@
 GET http://localhost:5000/customer
 
 ###
-GET http://localhost:5000/customer/6
+GET http://localhost:5000/user/1
 
 ###
 POST  http://localhost:5000/customer
-Content-Type: application/json
-
-{
-    "f_name": "john",
-    "l_name": "doe",
-    "address": "london",
-    "email": "hgtfrde@gmail.com",
-    "mobile": 1254789,
-}
-
-###
-
-PUT     http://localhost:5000/customer/4
 Content-Type: application/json
 
 {
@@ -29,7 +16,17 @@ Content-Type: application/json
 }
 
 ###
-DELETE    http://localhost:5000/customer/1
+
+PUT     http://localhost:5000/customer/4
+Content-Type: application/json
+
+{
+    "f_name": "john",
+    "l_name": "moe",
+    "address": "colombo",
+    "email": "hgtfrde@gmail.com",
+    "mobile": 98765421
+}
 
 ###
-GET  http://localhost:5000/customer/2
+DELETE    http://localhost:5000/customer/1
