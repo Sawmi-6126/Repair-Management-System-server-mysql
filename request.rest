@@ -1,31 +1,18 @@
-GET http://localhost:5000/customer
+GET http://localhost:5000/repair
 
 ###
-GET http://localhost:5000/user/1
+GET http://localhost:5000/repair/1
 
 ###
-POST  http://localhost:5000/customer
+POST  http://localhost:5000/repair
+
+###
+
+PUT     http://localhost:5000/repair/1
 Content-Type: application/json
 
 {
-    "f_name": "john",
-    "l_name": "moe",
-    "address": "london",
-    "email": "hgtfrde@gmail.com",
-    "mobile": 98765421
-}
-
-###
-
-PUT     http://localhost:5000/customer/4
-Content-Type: application/json
-
-{
-    "f_name": "john",
-    "l_name": "moe",
-    "address": "colombo",
-    "email": "hgtfrde@gmail.com",
-    "mobile": 98765421
+    
 }
 
 ###
