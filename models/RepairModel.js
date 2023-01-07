@@ -6,8 +6,8 @@ const Repair = db.define(
   "repair",
   {
     job_id: DataTypes.STRING,
-    m_type: DataTypes.STRING,
-    m_brand: DataTypes.STRING,
+    type: DataTypes.STRING,
+    brand: DataTypes.STRING,
     color: DataTypes.STRING,
     received_date: DataTypes.DATE,
     status: DataTypes.STRING,

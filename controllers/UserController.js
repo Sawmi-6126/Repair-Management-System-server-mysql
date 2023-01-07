@@ -1,58 +1,29 @@
 import User from "../models/UserModel.js";
-
-export const getUser = async (req, res) => {
-  try {
-    const response = await User.findAll();
-    res.status(200).json(response);
-  } catch (error) {
-    console.log(error.message);
-  }
-};
-
-export const getUserbyId = async (req, res) => {
-  try {
-    const response = await User.findOne({
-      where: {
-        id: req.params.id,
-      },
-    });
-    res.status(200).json(response);
-  } catch (error) {
-    console.log(error.message);
-  }
-};
+import bcrypt from "bcrypt";
 
 export const createUser = async (req, res) => {
-  try {
-    await User.create(req.body);
-    res.status(200).json({ msg: "User Created Successfully" });
-  } catch (error) {
-    console.log(error.message);
-  }
+  const { username, password } = req.body;
+  bcrypt.hash(password, 8).then((hash) => {
+    User.create({
+      username: username,
+      password: hash,
+    });
+    res.json("SUCCESS");
+  });
 };
 
-// export const updateCustomer = async (req, res) => {
-//   try {
-//     await Customer.update(req.body, {
-//       where: {
-//         id: req.params.id,
-//       },
-//     });
-//     res.status(201).json({ msg: "Customer Updated Successfully" });
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// };
+export const login = async (req, res) => {
+  const { username, password } = req.body;
+  const response = await User.findOne({
+    where: {
+      username: username,
+      // password: password,
+    },
+  });
+  if (!response) return res.json({ error: "User Doesn't Exist" });
 
-// export const deleteCustomer = async (req, res) => {
-//   try {
-//     await Customer.destroy({
-//       where: {
-//         id: req.params.id,
-//       },
-//     });
-//     res.status(201).json({ msg: "Customer Deleted!" });
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// };
+  bcrypt.compare(password, response.password).then((match) => {
+    if (!match) return res.json({ error: "Incorrect Username or Password" });
+    else return res.json("You Logged into the system");
+  });
+};

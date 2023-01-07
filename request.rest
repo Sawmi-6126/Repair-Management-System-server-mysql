@@ -1,18 +1,24 @@
-GET http://localhost:5000/repair
+GET http://localhost:5000/user
 
 ###
-GET http://localhost:5000/repair/1
+GET http://localhost:5000/user/1
 
 ###
-POST  http://localhost:5000/repair
+POST  http://localhost:5000/user
+Content-Type: application/json
+{
+    "username": "admin",
+    "password": "12345",
+    "passwordCheck": "12345"
+}
 
 ###
 
-PUT     http://localhost:5000/repair/1
+PUT     http://localhost:5000/customer/1
 Content-Type: application/json
 
 {
-    
+  
 }
 
 ###

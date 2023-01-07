@@ -5,9 +5,12 @@ import { DataTypes } from "sequelize";
 const User = db.define(
   "user",
   {
-    username: DataTypes.STRING,
-    password: DataTypes.STRING,
-    passwordCheck: DataTypes.STRING,
+    username: {
+      type: DataTypes.STRING,
+    },
+    password: {
+      type: DataTypes.STRING,
+    },
   },
   {
     freezeTableName: true,
