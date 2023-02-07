@@ -17,13 +17,13 @@ export const login = async (req, res) => {
   const response = await User.findOne({
     where: {
       username: username,
-      // password: password,
+      //password: password,
     },
   });
-  if (!response) return res.json({ error: "User Doesn't Exist" });
-
   bcrypt.compare(password, response.password).then((match) => {
     if (!match) return res.json({ error: "Incorrect Username or Password" });
     else return res.json("You Logged into the system");
   });
+
+  if (!response) return res.json({ error: "User Doesn't Exist" });
 };

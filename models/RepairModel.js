@@ -1,21 +1,25 @@
-import Sequelize from "sequelize";
+import Sequelize, { STRING } from "sequelize";
 import db from "../config/db.js";
 import { DataTypes } from "sequelize";
 
 const Repair = db.define(
   "repair",
   {
-    job_id: DataTypes.STRING,
-    type: DataTypes.STRING,
-    brand: DataTypes.STRING,
+    job_id: {
+      type: DataTypes.STRING,
+      unique: true,
+    },
+    m_type: DataTypes.STRING,
+    m_brand: DataTypes.STRING,
     color: DataTypes.STRING,
-    received_date: DataTypes.DATE,
+    received_date: DataTypes.DATEONLY,
     status: DataTypes.STRING,
     technician: DataTypes.STRING,
     customer_name: DataTypes.STRING,
   },
   {
     freezeTableName: true,
+    //initialAutoIncrement: 1000,
   }
 );
 

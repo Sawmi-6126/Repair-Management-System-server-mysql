@@ -1,15 +1,21 @@
-GET http://localhost:5000/user
+GET http://localhost:5000/repair
 
 ###
-GET http://localhost:5000/user/1
+GET http://localhost:5000/repair/1
 
 ###
-POST  http://localhost:5000/user
+POST  http://localhost:5000/repair
 Content-Type: application/json
+
 {
-    "username": "admin",
-    "password": "12345",
-    "passwordCheck": "12345"
+    "job_id": "4265",
+    "m_type": "Drill",
+    "m_brand": "Hugo",
+    "color": "Red",
+    "received_date": 2023-01-10,
+    "status": "Pending",
+    "technician": "Sri",
+    "customer_name": "sawmi",
 }
 
 ###

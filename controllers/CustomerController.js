@@ -56,3 +56,16 @@ export const deleteCustomer = async (req, res) => {
     console.log(error.message);
   }
 };
+
+export const getCustomerbyMobile = async (req, res) => {
+  try {
+    const response = await Customer.findOne({
+      where: {
+        mobile: req.body.mobile,
+      },
+    });
+    res.status(200).json(response);
+  } catch (error) {
+    console.log(error.message);
+  }
+};

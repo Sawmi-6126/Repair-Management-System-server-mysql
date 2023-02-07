@@ -1,25 +1,25 @@
-// import Sequelize from "sequelize";
-// import db from "../config/db.js";
-// import { DataTypes } from "sequelize";
+import Sequelize from "sequelize";
+import db from "../config/db.js";
+import { DataTypes } from "sequelize";
 
-// const Technician = db.define(
-//   "technician",
-//   {
-//     name: DataTypes.STRING,
-//     nic: DataTypes.STRING,
-//     t_mobile: DataTypes.STRING,
-//     epfno: DataTypes.STRING,
-//     salary: DataTypes.NUMBER,
-//     t_address: DataTypes.STRING,
-//     appointmentType: DataTypes.STRING,
-//   },
-//   {
-//     freezeTableName: true,
-//   }
-// );
+const Technician = db.define(
+  "technician",
+  {
+    name: DataTypes.STRING,
+    nic: DataTypes.STRING,
+    t_mobile: DataTypes.STRING,
+    epfno: DataTypes.STRING,
+    salary: DataTypes.INTEGER,
+    t_address: DataTypes.STRING,
+    appointmentType: DataTypes.STRING,
+  },
+  {
+    freezeTableName: true,
+  }
+);
 
-// export default Technician;
+export default Technician;
 
-// (async () => {
-//   await db.sync();
-// })();
+(async () => {
+  await db.sync();
+})();
