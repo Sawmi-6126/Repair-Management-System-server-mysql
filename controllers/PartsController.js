@@ -56,3 +56,22 @@ export const deleteParts = async (req, res) => {
     console.log(error.message);
   }
 };
+
+export const searchPart = async (req, res) => {
+  try {
+    const { barcode } = req.query;
+    const response = await Parts.findOne({
+      where: {
+        barcode: barcode,
+      },
+    });
+    if (response) {
+      res.send({ response });
+    } else {
+      res.send("Part not found");
+    }
+  } catch (error) {
+    console.error("Error searching for inventory:", error);
+    res.status(500).send("Error searching for inventory");
+  }
+};

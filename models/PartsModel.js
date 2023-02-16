@@ -4,7 +4,10 @@ import { DataTypes } from "sequelize";
 const Parts = db.define(
   "parts",
   {
-    barcode: DataTypes.STRING,
+    barcode: {
+      type: DataTypes.STRING,
+      unique: true,
+    },
     description: DataTypes.STRING,
     quantity: DataTypes.INTEGER,
     unit_price: DataTypes.FLOAT,

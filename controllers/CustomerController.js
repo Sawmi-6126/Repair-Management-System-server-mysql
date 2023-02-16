@@ -57,15 +57,22 @@ export const deleteCustomer = async (req, res) => {
   }
 };
 
-export const getCustomerbyMobile = async (req, res) => {
+export const searchCustomer = async (req, res) => {
   try {
+    const { mobile } = req.query;
     const response = await Customer.findOne({
       where: {
-        mobile: req.body.mobile,
+        //id: req.params.id,
+        mobile: mobile,
       },
     });
-    res.status(200).json(response);
+    if (response) {
+      res.send({ customerName: response.f_name });
+    } else {
+      res.send("Customer not found");
+    }
   } catch (error) {
-    console.log(error.message);
+    console.error("Error searching for customer:", error);
+    res.status(500).send("Error searching for customer");
   }
 };

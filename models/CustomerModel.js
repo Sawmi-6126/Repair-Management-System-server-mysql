@@ -5,11 +5,18 @@ import { DataTypes } from "sequelize";
 const Customer = db.define(
   "customer",
   {
-    f_name: DataTypes.STRING,
+    f_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     l_name: DataTypes.STRING,
     address: DataTypes.STRING,
     email: DataTypes.STRING,
-    mobile: DataTypes.STRING,
+    mobile: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: false,
+    },
   },
   {
     freezeTableName: true,
