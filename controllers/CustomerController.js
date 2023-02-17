@@ -76,3 +76,13 @@ export const searchCustomer = async (req, res) => {
     res.status(500).send("Error searching for customer");
   }
 };
+
+export const countCustomer = async (req, res) => {
+  try {
+    const countCustomer = await Customer.count();
+    res.json({ countCustomer });
+  } catch (error) {
+    console.error("Error getting customer count:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};

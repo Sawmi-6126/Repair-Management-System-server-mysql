@@ -56,3 +56,13 @@ export const deleteTechnician = async (req, res) => {
     console.log(error.message);
   }
 };
+
+export const countTechnician = async (req, res) => {
+  try {
+    const countTechnician = await Technician.count();
+    res.json({ countTechnician });
+  } catch (error) {
+    console.error("Error getting Technician count:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
