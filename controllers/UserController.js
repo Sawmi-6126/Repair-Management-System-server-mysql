@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 
 export const createUser = async (req, res) => {
   const { username, password } = req.body;
-  bcrypt.hash(password, 8).then((hash) => {
+  bcrypt.hash(password).then((hash) => {
     User.create({
       username: username,
       password: hash,
